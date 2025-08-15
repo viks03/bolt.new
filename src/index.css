@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* AnimeFlow Dark Theme Colors */
+    --background: 240 6% 5.5%; /* #0E0E0E */
+    --foreground: 0 0% 100%; /* #ffffff */
+
+    --card: 240 6% 5.5%; /* #0E0E0E */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 6% 8%; /* #141414 */
+    --popover-foreground: 0 0% 100%;
+
+    /* Purple accent color from anime site */
+    --primary: 258 73% 62%; /* #8a4af3 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Lighter purple for hovers/secondary */
+    --secondary: 254 45% 69%; /* #8686DA */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 8%; /* #141414 */
+    --muted-foreground: 0 0% 46%; /* #757575 */
+
+    --accent: 254 45% 69%; /* #8686DA */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders using the anime site color */
+    --border: 0 0% 15%; /* #262626 */
+    --input: 0 0% 15%; /* #262626 */
+    --ring: 258 73% 62%; /* #8a4af3 */
+
+    --radius: 0.625rem; /* 10px to match anime site */
+
+    /* Anime site specific colors */
+    --anime-primary: 258 73% 62%; /* #8a4af3 */
+    --anime-secondary: 254 45% 69%; /* #8686DA */
+    --anime-dark-bg: 240 6% 5.5%; /* #0E0E0E */
+    --anime-card-bg: 240 6% 8%; /* #141414 */
+    --anime-border: 0 0% 15%; /* #262626 */
+    --anime-text-muted: 0 0% 46%; /* #757575 */
+    
+    /* Gradients for smooth transitions */
+    --gradient-primary: linear-gradient(135deg, hsl(258 73% 62%), hsl(254 45% 69%));
+    --gradient-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    
+    /* Shadows with purple glow */
+    --shadow-glow: 0 0 40px hsl(258 73% 62% / 0.3);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-carousel: opacity 0.5s ease-in-out;
+
+    --sidebar-background: 240 6% 5.5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 258 73% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 254 45% 69%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 258 73% 62%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Karla', sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: auto;
+    font-display: swap;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Additional optimizations */
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  img {
+    content-visibility: auto;
+    loading: lazy;
+  }
+  
+  /* Critical rendering optimizations */
+  .carousel-slide {
+    contain: layout style paint;
+  }
+  
+  .anime-card {
+    contain: layout style paint;
+    will-change: transform;
+  }
+  
+  /* Optimize animations */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbars but keep scrolling (WebKit, Firefox, IE/Edge) */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
