@@ -1,0 +1,2 @@
+# bolt.new
+Anime Website
